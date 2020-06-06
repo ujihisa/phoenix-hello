@@ -4,8 +4,18 @@ defmodule Hello.MixProject do
   def project do
     [
       app: :hello,
+      # https://cloud.google.com/community/tutorials/elixir-phoenix-on-kubernetes-google-container-engine
+      releases: [
+        hello: [
+          include_erts: true,
+          include_executables_for: [:unix],
+          applications: [
+            runtime_tools: :permanent
+          ]
+        ]
+      ],
       version: "0.1.0",
-      elixir: "~> 1.7",
+      elixir: "~> 1.10",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
