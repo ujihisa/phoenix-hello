@@ -4,6 +4,8 @@ ARG app_name=hello
 ARG phoenix_subdir=.
 ARG build_env=prod
 ENV MIX_ENV=${build_env} TERM=xterm
+ENV PORT=8080
+EXPOSE ${PORT}
 WORKDIR /opt/app
 RUN apk update \
     && apk --no-cache --update add nodejs nodejs-npm \
@@ -19,7 +21,6 @@ RUN cd ${phoenix_subdir}/assets \
 RUN mix release ${app_name} \
     && mv _build/${build_env}/rel/${app_name} /opt/release \
     && mv /opt/release/bin/${app_name} /opt/release/bin/start_server
-
 #FROM alpine:latest
 #ARG project_id
 #RUN apk update \
