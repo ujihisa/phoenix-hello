@@ -20,7 +20,7 @@ config :hello, Hello.Repo,
   password: "password",
   database: "hello",
   # hostname: "127.0.0.1",
-  socket_dir: "/tmp/cloudsql/devs-sandbox:us-central1:hellodb2",
+  socket_dir: "/cloudsql/devs-sandbox:us-central1:hellodb2",
   pool_size: 15
 
 secret_key_base =
